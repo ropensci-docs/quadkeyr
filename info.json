@@ -1,0 +1,12 @@
+{
+  "commit": {
+    "commit": "1751b95f0d6ebf5ca067ba5181c5a5f39eac41aa",
+    "author": "Florencia D'Andrea <florencia.dandrea@gmail.com>",
+    "time": "2024-03-21 15:28:11",
+    "files": 1,
+    "merge": true,
+    "message": "Merge branch 'main' of github.com:ropensci/quadkeyr\n"
+  },
+  "repo": "https://github.com/ropensci/quadkeyr",
+  "pkg": "quadkeyr"
+}
