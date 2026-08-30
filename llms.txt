@@ -1,0 +1,245 @@
+# quadkeyr
+
+### What can this package do for you?
+
+The `quadkeyr` R package presents a comprehensive toolkit tailored for
+generating raster images from Quadkey-Identified data within
+[Microsoft’s Bing Maps Tile
+System](https://learn.microsoft.com/en-us/bingmaps/articles/bing-maps-tile-system).
+Designed to integrate Quadkey-Identified data into R workflows, this
+package facilitates the creation of QuadKey grids and raster images and
+introduces specialized functions for the processing of [Meta Mobility
+data, previously referred to as Facebook mobility
+data](https://dataforgood.facebook.com/).
+
+### What are QuadKeys in Tile Maps?
+
+Tile maps divide the Earth’s surface into a grid of tiles, with each
+tile corresponding to a specific geographic area at various zoom levels.
+
+QuadKeys represent a location on a map by encoding its hierarchical
+spatial position as a sequence of characters. They provide an efficient
+method to address and retrieve specific map tiles, facilitating rapid
+display within mapping applications.
+
+![](reference/figures/README-qks-1.png)
+
+The QuadKey of any tile starts with the QuadKey of its parent tile (the
+containing tile at the previous level). Image extracted from Microsoft’s
+Bing Maps Tile System webpage.
+
+------------------------------------------------------------------------
+
+The goal of `quadkeyr` is to:
+
+1.  [**Convert a QuadKey to a Simple Features data.frame (and
+    more)**](https://docs.ropensci.org/quadkeyr/articles/quadkey_to_sf_conversion.html)
+    `quadkeyr` provides functions to convert a QuadKey to a `sf` POINT
+    data.frame or `sf` POLYGON data.frame. Additionally, it offers all
+    the R functions described in the [official
+    documentation](https://learn.microsoft.com/en-us/bingmaps/articles/bing-maps-tile-system)
+    for converting QuadKeys to and from tiles, pixels, and geographic
+    coordinates.
+
+![](reference/figures/README-w1-1.png)
+
+2.  [**Generate Raster Images from Quadkey-Identified
+    Data**](https://docs.ropensci.org/quadkeyr/articles/quadkey_identified_data_to_raster.html)
+    Complete a grid of QuadKeys within a specified area and zoom level,
+    and create a `stars` raster. You can also directly convert QuadKeys
+    in a data.frame column into an `sf` POLYGON data.frame.
+
+![](reference/figures/README-w2-1.png)
+
+3.  [**Convert Meta (Facebook) Mobility QuadKey-identified Datasets into
+    Raster
+    Files**](https://docs.ropensci.org/quadkeyr/articles/facebook_mobility_csvs_to_raster_files.html)
+    Convert Meta (Facebook) mobility data `.csv` files into `.tif` files
+    by day and hour reported.
+
+![](reference/figures/README-w3-1.png)
+
+4.  [**Offer an App for visualizing QuadKeys on a
+    map**](https://docs.ropensci.org/quadkeyr/articles/quadkey_visualization_app.html)
+    Introduce a QuadKey visualization application enabling users to
+    validate function outcomes.
+
+## Install `quadkeyr`
+
+### R-Universe
+
+For the latest development version of `quadkeyr`:
+
+``` r
+
+install.packages("quadkeyr",
+                 repos = "https://ropensci.r-universe.dev")
+```
+
+### GitHub
+
+You can install the development version of `quadkeyr` from
+[GitHub](https://github.com/) with:
+
+``` r
+
+# install.packages("remotes")
+remotes::install_github("ropensci/quadkeyr")
+```
+
+### CRAN
+
+You can install the latest version of `quadkeyr` from CRAN with:
+
+``` r
+
+install.packages("quadkeyr")
+```
+
+## Code of Conduct
+
+Please note that this package is released with a [Contributor Code of
+Conduct](https://ropensci.org/code-of-conduct/). By contributing to this
+project, you agree to abide by its terms.
+
+## Contribute
+
+If you’d like to contribute to this project, please follow the
+[contributing
+guidelines](https://github.com/ropensci/quadkeyr/blob/main/.github/CONTRIBUTING.md)
+
+## Links of interest
+
+- [Bing Maps Tile Systems -
+  Microsoft](https://learn.microsoft.com/en-us/bingmaps/articles/bing-maps-tile-system)
+- [R - `slippymath`: Slippy Map Tile
+  Tools](https://CRAN.R-project.org/package=slippymath)
+- [Python - `pyquadkey2`](https://docs.muetsch.io/pyquadkey2/)
+- [Python - `python-quadkey`](https://github.com/CartoDB/python-quadkey)
+- [Python - `mercantile`](https://pypi.org/project/mercantile/)
+- [Rust - `geo-quadkey-rs`](https://lib.rs/crates/geo-quadkey-rs)
+- [TypeScript -
+  `quadkey-tilemath`](https://github.com/glassonion1/quadkey-tilemath)
+- [GeoCode Map viewer](https://9revolution9.com/tools/geo/geocode/)
+
+# Package index
+
+## From a QuadKey to a Simple Features data.frame and other conversions
+
+Functions to convert a QuadKey to a `sf` POINT data.frame or `sf`
+POLYGON data.frame. Additionally, all the R functions described in the
+official documentation to convert QuadKeys to and from tiles, pixels and
+geographic coordinates are available.
+
+- [`quadkey_to_polygon()`](https://docs.ropensci.org/quadkeyr/reference/quadkey_to_polygon.md)
+  : Convert a QuadKey into a square polygon
+- [`quadkey_to_latlong()`](https://docs.ropensci.org/quadkeyr/reference/quadkey_to_latlong.md)
+  : Convert a string of Quadkey numbers to lat/long coordinates
+- [`quadkey_to_tileXY()`](https://docs.ropensci.org/quadkeyr/reference/quadkey_to_tileXY.md)
+  : Convert a QuadKey into tile XY coordinates.
+- [`tileXY_to_pixelXY()`](https://docs.ropensci.org/quadkeyr/reference/tileXY_to_pixelXY.md)
+  : Convert tile XY coordinates into pixel XY coordinates
+- [`pixelXY_to_latlong()`](https://docs.ropensci.org/quadkeyr/reference/pixelXY_to_latlong.md)
+  : Convert pixel XY coordinatess into lat/long coordinates.
+- [`latlong_to_quadkey()`](https://docs.ropensci.org/quadkeyr/reference/latlong_to_quadkey.md)
+  : Convert latitude/longitude coordinates into QuadKeys
+- [`latlong_to_pixelXY()`](https://docs.ropensci.org/quadkeyr/reference/latlong_to_pixelXY.md)
+  : Convert lat/long coordinates to pixel XY coordinates
+- [`pixelXY_to_tileXY()`](https://docs.ropensci.org/quadkeyr/reference/pixelXY_to_tileXY.md)
+  : Convert pixel XY coordinates into tile XY coordinates
+- [`tileXY_to_quadkey()`](https://docs.ropensci.org/quadkeyr/reference/tileXY_to_quadkey.md)
+  : Convert tile XY coordinates into a QuadKey.
+- [`mapsize()`](https://docs.ropensci.org/quadkeyr/reference/mapsize.md)
+  : Map size in pixels
+- [`mapscale()`](https://docs.ropensci.org/quadkeyr/reference/mapscale.md)
+  : Map scale (1 : N)
+- [`ground_res()`](https://docs.ropensci.org/quadkeyr/reference/ground_res.md)
+  : Ground resolution at a specified latitude and zoom level
+
+## Generating a Raster Image from Quadkey-Identified Data
+
+Complete a grid of QuadKeys within a specified area and zoom level, and
+create a `stars` raster. You can also directly convert QuadKeys in a
+data.frame column into an `sf` POLYGON data.frame.
+
+- [`add_regular_polygon_grid()`](https://docs.ropensci.org/quadkeyr/reference/add_regular_polygon_grid.md)
+  :
+
+  Add the rows needed to complete a regular QuadKey polygon grid derived
+  from the bounding box of the `quadkey` column of a data.frame.
+
+- [`create_stars_raster()`](https://docs.ropensci.org/quadkeyr/reference/create_stars_raster.md)
+  :
+
+  Create a `stars` raster
+
+- [`quadkey_df_to_polygon()`](https://docs.ropensci.org/quadkeyr/reference/quadkey_df_to_polygon.md)
+  :
+
+  Convert data.frame with `quadkey` column to a `sf` POLYGON data.frame
+
+- [`create_qk_grid()`](https://docs.ropensci.org/quadkeyr/reference/create_qk_grid.md)
+  : Create grid of QuadKeys for a particular zoom or level of detail.
+
+- [`get_qk_coord()`](https://docs.ropensci.org/quadkeyr/reference/get_qk_coord.md)
+  : Get lat/long coordinates from the QuadKey
+
+- [`regular_qk_grid()`](https://docs.ropensci.org/quadkeyr/reference/regular_qk_grid.md)
+  :
+
+  Convert a incomplete QuadKey `sf` POINT data.frame into a regular
+  grid.
+
+- [`grid_to_polygon()`](https://docs.ropensci.org/quadkeyr/reference/grid_to_polygon.md)
+  : Convert a grid of QuadKeys to square polygons
+
+## Converting Facebook Mobility QuadKey-identified Datasets into Raster Files
+
+Convert Facebook mobility data `.csv` files into `.tif` files by day and
+hour reported.
+
+- [`read_fb_mobility_files()`](https://docs.ropensci.org/quadkeyr/reference/read_fb_mobility_files.md)
+  : Read all the .csv files in a folder and format the data.
+
+- [`format_fb_data()`](https://docs.ropensci.org/quadkeyr/reference/format_fb_data.md)
+  : Format the Facebook mobility data
+
+- [`missing_combinations()`](https://docs.ropensci.org/quadkeyr/reference/missing_combinations.md)
+  : Detect dates and hours missing in filenames
+
+- [`get_regular_polygon_grid()`](https://docs.ropensci.org/quadkeyr/reference/get_regular_polygon_grid.md)
+  :
+
+  Get regular QuadKey polygon grid derived from the bounding box of the
+  `quadkey` column of a data.frame.
+
+- [`polygon_to_raster()`](https://docs.ropensci.org/quadkeyr/reference/polygon_to_raster.md)
+  : Create and save raster images for different dates and times
+
+- [`apply_weekly_lag()`](https://docs.ropensci.org/quadkeyr/reference/apply_weekly_lag.md)
+  :
+
+  Apply a 7 day lag to the variable `n_crisis`
+
+## QuadKey Visualization App
+
+Introduce a QuadKey visualization application enabling users to validate
+function outcomes.
+
+- [`qkmap_app()`](https://docs.ropensci.org/quadkeyr/reference/qkmap_app.md)
+  : Launch the Shiny App
+
+# Articles
+
+### All vignettes
+
+- [Converting Meta (Facebook) Mobility QuadKey-identified Datasets into
+  Raster
+  Files](https://docs.ropensci.org/quadkeyr/articles/facebook_mobility_csvs_to_raster_files.md):
+- [Generating a Raster Image from Quadkey-Identified
+  Data](https://docs.ropensci.org/quadkeyr/articles/quadkey_identified_data_to_raster.md):
+- [From a QuadKey to a Simple Features data.frame and other
+  conversions](https://docs.ropensci.org/quadkeyr/articles/quadkey_to_sf_conversion.md):
+- [QuadKey Visualization
+  App](https://docs.ropensci.org/quadkeyr/articles/quadkey_visualization_app.md):
+- [quadkeyr](https://docs.ropensci.org/quadkeyr/articles/quadkeyr.md):

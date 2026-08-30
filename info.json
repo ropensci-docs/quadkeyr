@@ -1,0 +1,13 @@
+{
+  "commit": {
+    "commit": "07cc343b2d77d25b8e3e802fc3a5ca5e9bd72d0e",
+    "author": "Andrew Pulsipher <45372570+apulsipher@users.noreply.github.com>",
+    "time": "2025-03-25T19:31:35Z",
+    "files": 2,
+    "merge": false,
+    "message": "Add CRAN badges and update ForeSITE badge (#32)\n\n"
+  },
+  "repo": "https://github.com/ropensci/quadkeyr",
+  "pkg": "quadkeyr",
+  "time": "2026-08-30T07:19:18Z"
+}
